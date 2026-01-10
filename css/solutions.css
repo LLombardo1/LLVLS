@@ -1,0 +1,89 @@
+/* Solutions Page Styles */
+.solutions-page {
+    min-height: 100vh;
+    padding: 8rem 5% 5rem;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+}
+
+.solutions-page h1 {
+    text-align: center;
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    margin-bottom: 1rem;
+    color: var(--text-light);
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.solutions-page .subtitle {
+    text-align: center;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: var(--gold);
+    margin-bottom: 4rem;
+    letter-spacing: 1px;
+}
+
+.offer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.offer-card {
+    background: rgba(21, 27, 61, 0.6);
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    animation: fadeInUp 0.6s ease both;
+    text-align: center;
+    border: 1px solid rgba(201, 169, 97, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.offer-card:nth-child(1) { animation-delay: 0.1s; }
+.offer-card:nth-child(2) { animation-delay: 0.2s; }
+.offer-card:nth-child(3) { animation-delay: 0.3s; }
+
+.offer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(201, 169, 97, 0.2);
+    border-color: var(--gold);
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: grayscale(100%) brightness(200%);
+}
+
+.offer-card h3 {
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.offer-card p {
+    color: var(--text-muted);
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.8;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .solutions-page {
+        padding: 6rem 5% 3rem;
+    }
+
+    .offer-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .offer-card {
+        padding: 2rem 1.5rem;
+    }
+}
