@@ -1,89 +1,102 @@
-/* Solutions Page Styles */
-.solutions-page {
-    min-height: 100vh;
-    padding: 8rem 5% 5rem;
-    background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+/* Solutions Page Styles - Dark Theme */
+.solutions-hero {
+    margin-top: 70px;
+    padding: 4rem 2rem;
+    background: var(--primary-bg);
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
 }
 
-.solutions-page h1 {
-    text-align: center;
-    font-size: clamp(2.5rem, 6vw, 3.5rem);
+.solutions-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     margin-bottom: 1rem;
     color: var(--text-white);
-    font-weight: 300;
-    letter-spacing: 2px;
+    font-weight: 700;
 }
 
-.solutions-page .subtitle {
-    text-align: center;
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    color: var(--accent-gold);
-    margin-bottom: 4rem;
-    letter-spacing: 1px;
-}
-
-.offer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
+.solutions-hero p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--text-gray);
+    max-width: 600px;
     margin: 0 auto;
 }
 
-.offer-card {
-    background: var(--card-bg);
-    padding: 2.5rem 2rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    animation: fadeInUp 0.6s ease both;
-    text-align: center;
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    backdrop-filter: blur(10px);
+/* Solutions Grid */
+.solutions-section {
+    background: var(--secondary-bg);
+    padding: 4rem 0;
 }
 
-.offer-card:nth-child(1) { animation-delay: 0.1s; }
-.offer-card:nth-child(2) { animation-delay: 0.2s; }
-.offer-card:nth-child(3) { animation-delay: 0.3s; }
-
-.offer-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
-    border-color: var(--accent-gold);
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
-.icon {
-    font-size: 3rem;
+.solution-card {
+    background: var(--bg-card);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    transition: var(--transition);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.solution-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color);
+    box-shadow: 0 12px 35px rgba(201, 169, 97, 0.3);
+}
+
+.solution-card h3 {
+    color: var(--text-white);
+    font-size: 1.5rem;
     margin-bottom: 1rem;
-    filter: grayscale(100%) brightness(200%);
+    font-weight: 700;
 }
 
-.offer-card h3 {
-    color: var(--accent-gold);
-    margin-bottom: 1rem;
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
-    font-weight: 500;
-    letter-spacing: 1px;
-}
-
-.offer-card p {
+.solution-card p {
     color: var(--text-gray);
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    line-height: 1.8;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
 }
 
-/* Mobile Styles */
+.solution-features {
+    list-style: none;
+    margin-top: 1.5rem;
+}
+
+.solution-features li {
+    color: var(--text-white);
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+}
+
+.solution-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
-    .solutions-page {
-        padding: 6rem 5% 3rem;
+    .solutions-hero {
+        padding: 3rem 1.5rem;
     }
 
-    .offer-grid {
+    .solutions-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        padding: 0 1.5rem;
     }
 
-    .offer-card {
-        padding: 2rem 1.5rem;
+    .solution-card {
+        padding: 2rem;
     }
 }
