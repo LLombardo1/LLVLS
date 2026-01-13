@@ -11,6 +11,29 @@
     <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader-content">
+            <img src="images/Logo4.png" alt="LLV Solutions" class="loader-logo">
+            <div class="loader">
+                <div class="square" id="sq1"></div>
+                <div class="square" id="sq2"></div>
+                <div class="square" id="sq3"></div>
+                <div class="square" id="sq4"></div>
+                <div class="square" id="sq5"></div>
+                <div class="square" id="sq6"></div>
+                <div class="square" id="sq7"></div>
+                <div class="square" id="sq8"></div>
+                <div class="square" id="sq9"></div>
+            </div>
+            <div id="load-error" class="load-error" style="display: none;">
+                <p class="error-text">⚠️ Page is taking longer than expected</p>
+                <p class="error-subtext">Please try again later or check your connection</p>
+                <button class="retry-btn" onclick="location.reload()">Retry Now</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Top Info Bar -->
     <div class="top-bar">
         <div class="top-bar-container">
