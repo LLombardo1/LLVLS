@@ -16,10 +16,6 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     font-family: Verdana, Geneva, sans-serif;
     line-height: 1.6;
@@ -89,7 +85,7 @@ body {
 
 .btn-primary:hover {
     background: var(--primary-dark);
-    transform: translateY(-2px);
+    transform: translate3d(0, -2px, 0);
     box-shadow: 0 10px 25px rgba(201, 169, 97, 0.4);
 }
 

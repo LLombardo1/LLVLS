@@ -33,20 +33,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Smooth scroll animations
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.05,
+        rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
     // Observe all sections and cards
-    const animateElements = document.querySelectorAll('.assessment-section, .trust-section, .case-examples-section, .services-overview, .final-cta, .flip-card, .hover-card, .carousel article');
+    const animateElements = document.querySelectorAll('.assessment-section, .trust-section, .case-examples-section, .services-overview, .final-cta, .flip-card, .hover-card');
     
     animateElements.forEach((el, index) => {
         el.classList.add('fade-in-element');
