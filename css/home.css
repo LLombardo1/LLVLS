@@ -1,5 +1,33 @@
 /* Home Page Styles - Dark Theme */
 
+/* Scroll Animations */
+.fade-in-element {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-element.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.flip-card.fade-in-element {
+    transition-delay: calc(var(--index, 0) * 0.08s);
+}
+
+.hover-card.fade-in-element {
+    transition-delay: calc(var(--index, 0) * 0.12s);
+}
+
+.carousel article.fade-in-element {
+    transition-delay: calc(var(--index, 0) * 0.1s);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 /* Hero Section */
 .hero {
     margin-top: 0;
@@ -153,24 +181,86 @@
 
 .hero-photo {
     width: 100%;
-    height: 550px;
-    background: linear-gradient(135deg, rgba(201, 169, 97, 0.12) 0%, rgba(10, 14, 26, 0.9) 100%);
-    border-radius: 8px;
-    border: 1px solid rgba(201, 169, 97, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 600px;
+    border-radius: 12px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 1px rgba(201, 169, 97, 0.1);
 }
 
-.hero-photo::before {
-    content: 'Business Consulting';
-    color: rgba(168, 173, 184, 0.4);
-    font-size: 1.2rem;
-    font-weight: 300;
-    letter-spacing: 0.05em;
+.slideshow-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(100%);
+    animation: slideshow 20s infinite;
+    transition: transform 0.8s ease-in-out;
+}
+
+.slide.active {
+    transform: translateX(0);
+    z-index: 1;
+}
+
+.slide:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.slide:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.slide:nth-child(3) {
+    animation-delay: 10s;
+}
+
+.slide:nth-child(4) {
+    animation-delay: 15s;
+}
+
+@keyframes slideshow {
+    0% { 
+        transform: translateX(100%);
+        z-index: 0;
+    }
+    2% { 
+        transform: translateX(0);
+        z-index: 1;
+    }
+    23% { 
+        transform: translateX(0);
+        z-index: 1;
+    }
+    25% { 
+        transform: translateX(-100%);
+        z-index: 0;
+    }
+    100% { 
+        transform: translateX(-100%);
+        z-index: 0;
+    }
+}
+
+.hero-photo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(10, 14, 26, 0.15) 0%, rgba(10, 14, 26, 0.4) 100%);
+    pointer-events: none;
+    z-index: 2;
 }
 
 .hero-image {
@@ -179,9 +269,9 @@
     justify-content: center;
 }
 
-/* Assessment Form Section */
+/* Assessment CTA Section */
 .assessment-section {
-    background: var(--secondary-bg);
+    background: var(--primary-bg);
     padding: 3rem 0;
 }
 
@@ -192,34 +282,73 @@
     margin-bottom: 2rem;
 }
 
-.assessment-form {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    max-width: 900px;
-    margin: 0 auto;
+.cta-button-wrapper {
+    text-align: center;
+    margin-top: 2rem;
 }
 
-.assessment-form input {
-    padding: 1rem;
-    border: 2px solid var(--border-color);
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: var(--transition);
-    background: var(--bg-card);
+.btn-contact {
+    position: relative;
+    display: inline-block;
+    padding: 15px 40px;
+    border: 2px solid var(--primary-color);
+    text-transform: uppercase;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: 0.3s;
+    letter-spacing: 0.1em;
+}
+
+.btn-contact::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 2px);
+    background-color: var(--primary-bg);
+    transition: 0.3s ease-out;
+    transform: scaleY(1);
+    z-index: -1;
+}
+
+.btn-contact::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% - 50px);
+    background-color: var(--primary-bg);
+    transition: 0.3s ease-out;
+    transform: scaleY(1);
+    z-index: -1;
+}
+
+.btn-contact:hover::before {
+    transform: translateY(-25px);
+    height: 0;
+}
+
+.btn-contact:hover::after {
+    transform: scaleX(0);
+    transition-delay: 0.15s;
+}
+
+.btn-contact:hover {
+    border: 2px solid var(--primary-color);
     color: var(--text-white);
+    box-shadow: 0 5px 20px rgba(201, 169, 97, 0.4);
 }
 
-.assessment-form input:focus {
-    outline: none;
-    border-color: var(--primary-color);
+.btn-contact span {
+    position: relative;
+    z-index: 3;
 }
 
-.assessment-form button {
-    grid-column: -2 / -1;
-}
-
-/* Trust Section */
+/* Industries Section */
 .trust-section {
     background: var(--primary-bg);
     padding: 4rem 0;
@@ -236,29 +365,108 @@
     font-size: 1.1rem;
 }
 
-.trust-logos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 2rem;
-    max-width: 800px;
+.flip-container {
+    max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    perspective: 1000px;
 }
 
-.trust-card {
-    background: var(--bg-card);
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: 600;
-    color: var(--text-gray);
-    border: 1px solid var(--border-color);
-    transition: var(--transition);
+.flip-card {
+    position: relative;
+    cursor: pointer;
+    width: 220px;
+    height: 200px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
 }
 
-.trust-card:hover {
-    transform: translateY(-5px);
+.flip-card:hover {
+    transform: rotateY(180deg);
+}
+
+.flip-face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flip-face1 {
+    background: rgba(10, 14, 26, 0.9);
+    border: 2px solid var(--border-color);
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.flip-card:hover .flip-face1 {
     border-color: var(--primary-color);
-    box-shadow: 0 8px 25px rgba(201, 169, 97, 0.2);
+}
+
+.flip-face1 .flip-content {
+    text-align: center;
+    transition: 0.3s;
+}
+
+.flip-card:hover .flip-face1 .flip-content {
+    opacity: 0.9;
+}
+
+.industry-icon {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 0.75rem;
+    background: linear-gradient(135deg, rgba(201, 169, 97, 0.15), rgba(201, 169, 97, 0.05));
+    box-shadow: 0 4px 15px rgba(201, 169, 97, 0.2);
+    color: var(--primary-color);
+}
+
+.industry-icon svg {
+    width: 36px;
+    height: 36px;
+    stroke: var(--primary-color);
+}
+
+.flip-face1 .flip-content h3 {
+    margin: 0;
+    padding: 0;
+    color: var(--text-white);
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.flip-face2 {
+    background: var(--primary-color);
+    padding: 20px;
+    box-sizing: border-box;
+    border: 2px solid var(--primary-color);
+    transform: rotateY(180deg);
+    box-shadow: 0 10px 30px rgba(201, 169, 97, 0.5);
+}
+
+.flip-face2 .flip-content p {
+    margin: 0;
+    padding: 0;
+    color: var(--primary-bg);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: center;
+    font-weight: 500;
 }
 
 /* Case Examples Section */
