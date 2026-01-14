@@ -1,17 +1,34 @@
 # OS Files
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Editor Files
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
 # Logs
 *.log
 npm-debug.log*
 
-# Environment
+# Environment & Config
 .env
 .env.local
+
+# Setup & Development Files
+SETUP-*.md
+TODO.md
+NOTES.md
+
+# Backup Files
+*.bak
+*.backup
+*.old
+
+# Build/Deploy (if added later)
+node_modules/
+dist/
+.cache/

@@ -6,6 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Contact LLV Solutions for technology consulting services">
     <title>LLV Solutions - Contact Us</title>
+    <link rel="icon" type="image/png" href="images/Logo3.png">
+    
+    <!-- Performance Optimization -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000">
+    <link rel="preload" href="css/main.css" as="style">
+    <link rel="preload" href="css/nav.css" as="style">
+    <link rel="preload" href="css/contact.css" as="style">
+    
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/contact.css">
@@ -51,16 +59,15 @@
         <div class="contact-container">
                 <div class="contact-info">
                     <h2>Book Your Free Consultation</h2>
-                    <p class="inquiry-text">Submit the form to request a consultation appointment. We'll reach out within 24 hours to schedule a time that works for you. Whether it's a quick call or an in-depth meeting, we're here to discuss your technology needs and goals.</p>
-                    <!-- EDIT: Customize the response time and scheduling message above -->
+                    <p class="inquiry-text">Submit the form to request a free consultation appointment. We'll reach out via email within 24 hours to schedule a time that works for you. Whether it's a quick call or an in-depth meeting, we're here to discuss your technology needs and goals.</p>
                     
                     <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-icon"></div>
                             <div>
-                                <h4>Email</h4>
-                                <p><a href="mailto:YOUR-EMAIL@example.com">YOUR-EMAIL@example.com</a></p>
-                                <!-- EDIT: Replace with your actual email -->
+                                <h4>Email Us</h4>
+                                <p><a href="mailto:Info@llv-solutions.com">Info@llv-solutions.com</a></p>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.9;">Preferred contact method - We respond within 24 hours</p>
                             </div>
                         </div>
                         
@@ -69,46 +76,37 @@
                             <div>
                                 <h4>Service Areas</h4>
                                 <p>South Florida & New York/New Jersey Metro</p>
-                                <!-- Primary service areas -->
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon"></div>
-                            <div>
-                                <h4>Phone</h4>
-                                <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
-                                <!-- EDIT: Replace with your phone number -->
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="contact-form-wrapper">
-                    <h3 class="form-title">Request a Consultation</h3>
-                    <p class="form-subtitle">Share your details and we'll schedule a time to connect and discuss how we can help your business.</p>
-                    <form class="contact-form">
+                    <h3 class="form-title">Request a Free Consultation</h3>
+                    <p class="form-subtitle">Share your details and we'll reach out via email to schedule a time to connect and discuss how we can help your business.</p>
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/mojjqgnw" method="POST">
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" id="name" placeholder="Your Name" required>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" placeholder="your@email.com" required>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="company">Company</label>
-                            <input type="text" id="company" placeholder="Your Company">
+                            <input type="text" id="company" name="company" placeholder="Your Company">
                         </div>
                         
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" placeholder="Tell us about your project and what you'd like to discuss during the consultation..." rows="6" required></textarea>
+                            <textarea id="message" name="message" placeholder="Tell us about your project and what you'd like to discuss during the consultation..." rows="6" required></textarea>
                         </div>
                         
-                        <button type="submit" class="box box-primary box-form">Request Consultation</button>
+                        <button type="submit" class="box box-primary box-form">Request Free Consultation</button>
+                        <p id="form-message" style="margin-top: 1rem; text-align: center;"></p>
                     </form>
                 </div>
             </div>
@@ -134,7 +132,7 @@
                 <div class="footer-column">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="mailto:info@llvsolutions.com">fill in email-- tbd</a></li>
+                        <li><a href="mailto:Info@llv-solutions.com">Info@llv-solutions.com</a></li>
                     </ul>
                 </div>
             </div>
@@ -144,6 +142,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

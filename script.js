@@ -1,21 +1,14 @@
-// Global Error Handler
 window.addEventListener('error', function(e) {
-    console.error('Error caught:', e.error || e.message);
     if (e.target.tagName === 'IMG') {
-        // Handle image load errors
         e.target.style.display = 'none';
-        console.warn('Image failed to load:', e.target.src);
     }
     return false;
 }, true);
 
-// Unhandled Promise Rejection Handler
 window.addEventListener('unhandledrejection', function(e) {
-    console.error('Unhandled promise rejection:', e.reason);
     e.preventDefault();
 });
 
-// Network Error Detection
 window.addEventListener('offline', function() {
     showNotification('You are offline. Please check your internet connection.', 'warning');
 });
@@ -38,20 +31,15 @@ function showNotification(message, type = 'info') {
     `;
     document.body.appendChild(notification);
     
-    setTimeout(() => {
-        notification.classList.add('show');
-    }, 100);
-    
+    setTimeout(() => notification.classList.add('show'), 100);
     setTimeout(() => {
         notification.classList.remove('show');
         setTimeout(() => notification.remove(), 300);
     }, 5000);
 }
 
-// Page Loader with timeout
 let pageLoaded = false;
 
-// Set timeout to show error if page takes too long
 const loadTimeout = setTimeout(function() {
     if (!pageLoaded) {
         const loader = document.querySelector('.loader');
@@ -61,7 +49,7 @@ const loadTimeout = setTimeout(function() {
             errorMsg.style.display = 'block';
         }
     }
-}, 10000); // 10 seconds timeout
+}, 10000);
 
 window.addEventListener('load', function() {
     pageLoaded = true;
@@ -93,77 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const form = document.querySelector('.contact-form');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const button = this.querySelector('button');
-            const originalText = button.textContent;
-            
-            try {
-                // Validate form fields
-                const name = form.querySelector('#name');
-                const email = form.querySelector('#email');
-                const message = form.querySelector('#message');
-                
-                if (name && !name.value.trim()) {
-                    showNotification('Please enter your name', 'warning');
-                    name.focus();
-                    return;
-                }
-                
-                if (email && !email.value.trim()) {
-                    showNotification('Please enter your email', 'warning');
-                    email.focus();
-                    return;
-                }
-                
-                if (email && !isValidEmail(email.value)) {
-                    showNotification('Please enter a valid email address', 'warning');
-                    email.focus();
-                    return;
-                }
-                
-                if (message && !message.value.trim()) {
-                    showNotification('Please enter a message', 'warning');
-                    message.focus();
-                    return;
-                }
-                
-                // Simulate form submission
-                button.textContent = 'Sending...';
-                button.disabled = true;
-                button.style.background = '#c9a961';
-                
-                setTimeout(() => {
-                    button.textContent = 'Sent!';
-                    button.style.background = '#27ae60';
-                    showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
-                    
-                    setTimeout(() => {
-                        form.reset();
-                        button.textContent = originalText;
-                        button.style.background = '';
-                        button.disabled = false;
-                    }, 2000);
-                }, 1500);
-                
-            } catch (error) {
-                console.error('Form submission error:', error);
-                showNotification('An error occurred. Please try again.', 'warning');
-                button.textContent = originalText;
-                button.style.background = '';
-                button.disabled = false;
-            }
-        });
-    }
-
-    // Email validation helper
-    function isValidEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    // Smooth scroll animations with error handling
     const observerOptions = {
         threshold: 0.05,
         rootMargin: '0px 0px -50px 0px'
@@ -179,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, observerOptions);
 
-        // Observe all sections and cards
         const animateElements = document.querySelectorAll('.assessment-section, .trust-section, .case-examples-section, .services-overview, .final-cta, .flip-card, .hover-card');
         
         animateElements.forEach((el, index) => {
@@ -188,13 +104,10 @@ document.addEventListener('DOMContentLoaded', function() {
             observer.observe(el);
         });
     } catch (error) {
-        console.warn('Animation observer error:', error);
-        // Fallback: show all elements immediately
         const animateElements = document.querySelectorAll('.fade-in-element');
         animateElements.forEach(el => el.classList.add('animate-in'));
     }
 
-    // Smooth scrolling for anchor links with error handling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             try {
@@ -205,23 +118,20 @@ document.addEventListener('DOMContentLoaded', function() {
                         behavior: 'smooth',
                         block: 'start'
                     });
-                } else {
-                    console.warn('Anchor target not found:', this.getAttribute('href'));
                 }
-            } catch (error) {
-                console.error('Scroll error:', error);
-            }
+            } catch (error) {}
         });
     });
 
-    // Handle broken images
     document.querySelectorAll('img').forEach(img => {
         img.addEventListener('error', function() {
             if (!this.dataset.errorHandled) {
                 this.dataset.errorHandled = 'true';
                 this.style.display = 'none';
-                console.warn('Image failed to load:', this.src);
             }
         });
     });
 });
+
+// Formspree native form submission (no JavaScript needed)
+// Form submits directly to https://formspree.io/f/mojjqgnw
