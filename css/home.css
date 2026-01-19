@@ -617,8 +617,8 @@ html {
 
 /* Carousel Styles */
 .services-overview .carousel {
-    --items: 6;
-    --carousel-duration: 40s;
+    --items: 7;
+    --carousel-duration: 45s;
     --carousel-width: min(85vw, 900px);
     --carousel-item-width: 320px;
     --carousel-item-height: 420px;
@@ -677,6 +677,7 @@ html {
 .carousel > article:nth-child(4) { --i: 3; }
 .carousel > article:nth-child(5) { --i: 4; }
 .carousel > article:nth-child(6) { --i: 5; }
+.carousel > article:nth-child(7) { --i: 6; }
 
 .carousel > article:hover {
     border-color: var(--primary-color);
